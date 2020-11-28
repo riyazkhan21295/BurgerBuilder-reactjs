@@ -1,9 +1,11 @@
 import * as React from "react";
 
-import BuildControls from "../../components/Burger/BuildControls/BuildControls";
-import Burger from "../../components/Burger/Burger";
-
 import Aux from "../../hoc/Auxiliary";
+
+import Burger from "../../components/Burger/Burger";
+import BuildControls from "../../components/Burger/BuildControls/BuildControls";
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 
 const INGREDIENT_PRICES = {
 	salad: 0.5,
@@ -25,6 +27,7 @@ class BurgerBuilder extends React.Component {
 			},
 			totalPrice: 4,
 			purchaseable: false,
+			purchasing: false,
 		};
 	}
 
@@ -42,8 +45,17 @@ class BurgerBuilder extends React.Component {
 					ingredientRemoved={this.removeIngredientHandler}
 					disabled={disabledInfo}
 					purchaseable={this.state.purchaseable}
+					ordered={this.purchaseHandler}
 					price={this.state.totalPrice}
 				/>
+				<Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+					<OrderSummary
+						ingredients={this.state.ingredients}
+						purchaseCanceled={this.purchaseCancelHandler}
+						purchaseContinued={this.purchaseContinueHandler}
+						price={this.state.totalPrice}
+					/>
+				</Modal>
 			</Aux>
 		);
 	}
@@ -103,6 +115,22 @@ class BurgerBuilder extends React.Component {
 		this.setState({
 			purchaseable: sum > 0 ? true : false,
 		});
+	};
+
+	purchaseHandler = () => {
+		this.setState({
+			purchasing: true,
+		});
+	};
+
+	purchaseCancelHandler = () => {
+		this.setState({
+			purchasing: false,
+		});
+	};
+
+	purchaseContinueHandler = () => {
+		alert("Order Placed!");
 	};
 }
 
