@@ -1,13 +1,13 @@
-import * as React from "react";
+import * as React from 'react';
 
-import Aux from "../../../hoc/Auxiliary";
-import Backdrop from "../Backdrop/Backdrop";
+import Aux from '../../../hoc/Auxiliary';
+import Backdrop from '../Backdrop/Backdrop';
 
-import "./Modal.css";
+import './Modal.css';
 
 class Modal extends React.Component {
 	shouldComponentUpdate(nextProps, nextState) {
-		if (nextProps.show !== this.props.show) {
+		if (nextProps.show !== this.props.show || nextProps.children !== this.props.children) {
 			return true;
 		}
 
@@ -15,13 +15,13 @@ class Modal extends React.Component {
 	}
 
 	componentDidUpdate() {
-		console.log("[Modal] will update");
+		console.log('[Modal] will update');
 	}
 
 	render() {
 		const style = {
-			transform: this.props.show ? "translateY(0)" : "translateY(-100vh)",
-			opacity: this.props.show ? "1" : "0",
+			transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+			opacity: this.props.show ? '1' : '0',
 		};
 
 		return (

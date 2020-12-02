@@ -1,12 +1,14 @@
-import Layout from "./components/Layout/Layout";
-import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder";
+import * as React from 'react';
 
-function App() {
+import Layout from './components/Layout/Layout';
+import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+
+const App = props => {
 	return (
 		<Layout>
 			<BurgerBuilder />
 		</Layout>
 	);
-}
+};
 
 export default App;

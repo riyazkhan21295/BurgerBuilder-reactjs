@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./BuildControl.css";
+import './BuildControl.css';
 
 const BuildControl = props => {
 	return (

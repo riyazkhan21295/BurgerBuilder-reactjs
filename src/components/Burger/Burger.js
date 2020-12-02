@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./Burger.css";
+import './Burger.css';
 
-import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const getBurgerIngredient = ingredients => {
 	// return Object.keys(ingredients).reduce((accumulator, currentValue) => {

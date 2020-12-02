@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./Logo.css";
-import burgerLogo from "../../assets/images/burger-logo.png";
+import './Logo.css';
+import burgerLogo from '../../assets/images/burger-logo.png';
 
 const Logo = props => {
 	return (

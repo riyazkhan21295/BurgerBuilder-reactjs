@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./Layout.css";
+import './Layout.css';
 
-import Aux from "../../hoc/Auxiliary";
-import Toolbar from "../Navigation/Toolbar/Toolbar";
-import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
+import Aux from '../../hoc/Auxiliary';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 class Layout extends React.Component {
 	constructor(props) {
@@ -33,4 +33,5 @@ class Layout extends React.Component {
 		this.setState(prevState => ({ showSideDrawer: !prevState.showSideDrawer }));
 	};
 }
+
 export default Layout;

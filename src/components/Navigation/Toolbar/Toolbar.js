@@ -1,17 +1,17 @@
-import * as React from "react";
-import Logo from "../../Logo/Logo";
+import * as React from 'react';
 
-import "./Toolbar.css";
+import './Toolbar.css';
 
-import NavigationItems from "../NavigationItems/NavigationItems";
-import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
+import Logo from '../../Logo/Logo';
+import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
+import NavigationItems from '../NavigationItems/NavigationItems';
 
 const Toolbar = props => {
 	return (
 		<header className='Toolbar'>
 			<DrawerToggle clicked={props.drawerToggleClicked} />
 			<Logo />
-			<nav class='DesktopOnly'>
+			<nav className='DesktopOnly'>
 				<NavigationItems />
 			</nav>
 		</header>

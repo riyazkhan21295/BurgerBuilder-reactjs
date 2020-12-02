@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./DrawerToggle.css";
+import './DrawerToggle.css';
 
 const DrawerToggle = props => {
 	return (
