@@ -13,7 +13,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 import * as actionCreators from '../../store/actions/index';
 
-class BurgerBuilder extends React.Component {
+export class BurgerBuilder extends React.Component {
     constructor(props) {
         super(props);
 
@@ -69,7 +69,6 @@ class BurgerBuilder extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         this.props.onInitIngredients();
     }
 

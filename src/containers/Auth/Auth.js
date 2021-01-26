@@ -8,6 +8,8 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 
 import * as actionCreators from '../../store/actions/index';
 
+import { checkValidity } from '../../shared/utility';
+
 import './Auth.css';
 
 class Auth extends React.Component {
@@ -116,7 +118,7 @@ class Auth extends React.Component {
             [controlName]: {
                 ...this.state.controls[controlName],
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true,
             },
         };
@@ -124,25 +126,6 @@ class Auth extends React.Component {
         this.setState({
             controls: updatedControls,
         });
-    };
-
-    checkValidity = (value, rules) => {
-        let isValid = true;
-        if (!rules) return true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid ? true : false;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid ? true : false;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid ? true : false;
-        }
-
-        return isValid;
     };
 
     submitHandler = event => {

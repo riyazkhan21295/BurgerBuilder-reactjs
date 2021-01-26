@@ -10,6 +10,8 @@ import Input from '../../../components/UI/Input/Input';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 
 import * as actionCreators from '../../../store/actions/index';
+
+import { checkValidity } from '../../../shared/utility';
 class ContactData extends React.Component {
     constructor(props) {
         super(props);
@@ -160,7 +162,7 @@ class ContactData extends React.Component {
         };
         updateFormElement.value = event.target.value;
         // if (updateFormElement.validation) {
-        updateFormElement.valid = this.checkValidity(updateFormElement.value, updateFormElement.validation);
+        updateFormElement.valid = checkValidity(updateFormElement.value, updateFormElement.validation);
         // }
         updateFormElement.touched = true;
         updatedOrderForm[inputIdentifier] = updateFormElement;
@@ -174,25 +176,6 @@ class ContactData extends React.Component {
             orderForm: updatedOrderForm,
             formIsValid: formIsValid,
         });
-    };
-
-    checkValidity = (value, rules) => {
-        let isValid = true;
-        if (!rules) return true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid ? true : false;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid ? true : false;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid ? true : false;
-        }
-
-        return isValid;
     };
 
     orderHandler = event => {
