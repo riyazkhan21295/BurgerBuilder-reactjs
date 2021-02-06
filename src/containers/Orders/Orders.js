@@ -8,22 +8,22 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 import * as actionCreators from '../../store/actions/index';
 
-class Orders extends React.Component {
-    render() {
-        let orders = <Spinner />;
-        if (!this.props.loading) {
-            orders = this.props.orders.map(order => (
-                <Order key={order.id} ingredients={order.ingredients} price={order.price} />
-            ));
-        }
+const Orders = props => {
+    const { onFetchOrders, token, userId } = props;
 
-        return <div>{orders}</div>;
+    React.useEffect(() => {
+        onFetchOrders(token, userId);
+    }, [onFetchOrders, token, userId]);
+
+    let orders = <Spinner />;
+    if (!props.loading) {
+        orders = props.orders.map(order => (
+            <Order key={order.id} ingredients={order.ingredients} price={order.price} />
+        ));
     }
 
-    componentDidMount() {
-        this.props.onFetchOrders(this.props.token, this.props.userId);
-    }
-}
+    return <div>{orders}</div>;
+};
 
 const mapStateToProps = state => {
     return {
@@ -36,7 +36,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchOrders: (token, userId) => dispatch(actionCreators.fetchOrdersStartAsync(token, userId)),
+        onFetchOrders: (token, userId) => dispatch(actionCreators.fetchOrders(token, userId)),
     };
 };
 

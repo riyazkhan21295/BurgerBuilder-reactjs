@@ -4,15 +4,15 @@ import { Redirect } from 'react-router-dom';
 
 import * as actionsCreators from '../../../store/actions/index';
 
-class Logout extends React.Component {
-    render() {
-        return <Redirect to='/' />;
-    }
+const Logout = props => {
+    const { onLogout } = props;
 
-    componentDidMount() {
-        this.props.onLogout();
-    }
-}
+    React.useEffect(() => {
+        onLogout();
+    }, [onLogout]);
+
+    return <Redirect to='/' />;
+};
 
 const mapDispatchToProps = dispatch => {
     return {
